@@ -1,0 +1,33 @@
+body, html {
+  height: 100%;
+}
+.bg {
+  background-image: url("../../../image/fundo_inspira5.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+.bg2 {
+  background-image: url("../../../image/fundo_inspira.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.floatButton{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
+    background-color:#ff7043;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+}
+
+.button-float{
+    margin-top:22px;
+}
