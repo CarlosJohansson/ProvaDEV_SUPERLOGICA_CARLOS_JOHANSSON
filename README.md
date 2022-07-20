@@ -1,4 +1,4 @@
-# ProvaDEV_SUPERLOGICA_CARLOS_JOHANSSON
+# Prova DEV SUPERLÓGICA - CARLOS JOHANSSON
 
 Exercícios referentes a vaga de desenvolvedor pleno PHP Superlógica tecnologia.
 
