@@ -9,7 +9,7 @@
 					<div class="row">
 						<div class="col">
 							<b>Nome:</b>
-							<p>Carlos Guilherme M. Johansson</p>
+							<p>Carlos Guilherme M. Johansson - 26 anos</p>
 						</div>
 						<div class="col">
 							<b>Email:</b>
