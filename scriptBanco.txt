@@ -1,1 +1,118 @@
-CREATE TABLE `prova_dev_carlos`.`tb_usuarios` ( `ID_USUARIO` INT NOT NULL AUTO_INCREMENT , `NOME_COMPLETO` VARCHAR(200) NOT NULL , `CEP` INT(8) NOT NULL , `EMAIL` VARCHAR(100) NOT NULL , `SENHA` VARCHAR(100) NOT NULL , `USUARIO` VARCHAR(40) NOT NULL , `CRIADO_EM` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`ID_USUARIO`)) ENGINE = InnoDB;
+----------------------- CRIAÇÃO DO BANCO DE DADOS 
+
+CREATE TABLE `info` (
+  `ID` int(11) NOT NULL,
+  `CPF` varchar(11) NOT NULL,
+  `GENERO` char(1) NOT NULL,
+  `ANO_NASCIMENTO` year(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tb_usuarios`
+--
+
+CREATE TABLE `tb_usuarios` (
+  `ID_USUARIO` int(11) NOT NULL,
+  `NOME_COMPLETO` varchar(200) NOT NULL,
+  `CEP` int(9) NOT NULL,
+  `EMAIL` varchar(100) NOT NULL,
+  `SENHA` varchar(100) NOT NULL,
+  `USUARIO` varchar(40) NOT NULL,
+  `CRIADO_EM` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `ID` int(11) NOT NULL,
+  `CPF` varchar(11) NOT NULL,
+  `NOME` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices para tabela `info`
+--
+ALTER TABLE `info`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Índices para tabela `tb_usuarios`
+--
+ALTER TABLE `tb_usuarios`
+  ADD PRIMARY KEY (`ID_USUARIO`);
+
+--
+-- Índices para tabela `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT da tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT da tabela `info`
+--
+ALTER TABLE `info`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT da tabela `tb_usuarios`
+--
+ALTER TABLE `tb_usuarios`
+  MODIFY `ID_USUARIO` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT da tabela `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+
+
+
+----------------------- INSERÇÃO NAS TABELAS 
+
+TABELA USUARIO
+
+INSERT INTO `usuario` (`ID`, `CPF`, `NOME`) VALUES (1, '16798125050', 'Luke Skywalker');
+INSERT INTO `usuario` (`ID`, `CPF`, `NOME`) VALUES (2, '59875804045', 'Bruce Wayne');
+INSERT INTO `usuario` (`ID`, `CPF`, `NOME`) VALUES (3, '04707649025', 'Diane Prince');
+INSERT INTO `usuario` (`ID`, `CPF`, `NOME`) VALUES (4, '21142450040', 'Bruce Banner');
+INSERT INTO `usuario` (`ID`, `CPF`, `NOME`) VALUES (5, '83257946074', 'Harley Quinn');
+INSERT INTO `usuario` (`ID`, `CPF`, `NOME`) VALUES (6, '07583509025', 'Peter Parker');
+
+TABELA INFO
+
+INSERT INTO `info` (`ID`, `CPF`, `GENERO`, `ANO_NASCIMENTO`) VALUES ('1', '16798125050', 'M', '1976');
+INSERT INTO `info` (`ID`, `CPF`, `GENERO`, `ANO_NASCIMENTO`) VALUES ('2', '59875804045', 'M', '1960');
+INSERT INTO `info` (`ID`, `CPF`, `GENERO`, `ANO_NASCIMENTO`) VALUES ('3', '04707649025', 'F', '1988');
+INSERT INTO `info` (`ID`, `CPF`, `GENERO`, `ANO_NASCIMENTO`) VALUES ('4', '21142450040', 'M', '1954');
+INSERT INTO `info` (`ID`, `CPF`, `GENERO`, `ANO_NASCIMENTO`) VALUES ('5', '83257946074', 'F', '1970');
+INSERT INTO `info` (`ID`, `CPF`, `GENERO`, `ANO_NASCIMENTO`) VALUES ('6', '07583509025', 'M', '1972');
+
+
+
+QUERY PARA A BUSCA SOLICITADA NO ULTIMO EXERCICIO
+	
+SELECT CONCAT(U.NOME, ' - ', I.GENERO) AS USUARIO, 
+	CASE 
+		WHEN (2022 - I.ANO_NASCIMENTO) <= 50 THEN 'NÃO' 
+		ELSE 'SIM' 
+	END AS MAIOR_50_ANOS 
+FROM USUARIO U 
+INNER JOIN INFO I ON I.ID = U.ID AND I.CPF = U.CPF
+WHERE I.GENERO = 'M'
+ORDER BY U.NOME DESC
